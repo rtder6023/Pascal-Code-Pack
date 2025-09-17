@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{CC9A352F-FE6E-4EEE-8A91-E43F936A74EC}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="C:\Users\에어포스\Documents\Embarcadero\Studio\Projects\Project1.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DBConnect.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Project1">
+        <MSBuild Projects="C:\Users\에어포스\Documents\Embarcadero\Studio\Projects\Project1.dproj"/>
+    </Target>
+    <Target Name="Project1:Clean">
+        <MSBuild Projects="C:\Users\에어포스\Documents\Embarcadero\Studio\Projects\Project1.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project1:Make">
+        <MSBuild Projects="C:\Users\에어포스\Documents\Embarcadero\Studio\Projects\Project1.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DBConnect">
+        <MSBuild Projects="DBConnect.dproj"/>
+    </Target>
+    <Target Name="DBConnect:Clean">
+        <MSBuild Projects="DBConnect.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DBConnect:Make">
+        <MSBuild Projects="DBConnect.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Project1;DBConnect"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Project1:Clean;DBConnect:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Project1:Make;DBConnect:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
